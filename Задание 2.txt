@@ -1,0 +1,9 @@
+SELECT 
+    p.ProductName,
+    ISNULL(c.CategoryName, 'No Category') AS CategoryName
+FROM 
+    [master].[dbo].[Products] p
+LEFT JOIN 
+    [master].[dbo].[ProductCategories] pc ON p.ProductID = pc.ProductID
+LEFT JOIN 
+    [master].[dbo].[Categories] c ON pc.CategoryID = c.CategoryID;
