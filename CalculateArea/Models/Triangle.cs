@@ -50,5 +50,30 @@ namespace CalculateArea.Models
             return Math.Sqrt(p * (p - sideA) * (p - sideB) * (p - sideC));
         }
 
+        public bool IsRightAngled()
+        {
+            double[] sides = new double[] { SideA, SideB, SideC };
+
+            // Сортировка длин сторон в порядке возрастания
+            for (int i = 0; i < sides.Length - 1; i++)
+            {
+                for (int j = i + 1; j < sides.Length; j++)
+                {
+                    if (sides[i] > sides[j])
+                    {
+                        double temp = sides[i];
+                        sides[i] = sides[j];
+                        sides[j] = temp;
+                    }
+                }
+            }
+
+            double longestSideSquare = Math.Pow(sides[2], 2);
+            double sumOfOtherSquares = Math.Pow(sides[0], 2) + Math.Pow(sides[1], 2);
+
+            return Math.Abs(longestSideSquare - sumOfOtherSquares) < 0.0001;
+        }
+
+
     }
 }

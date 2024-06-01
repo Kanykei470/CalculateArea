@@ -25,6 +25,20 @@ namespace CalculateArea.Tests
         }
 
         [Test]
+        public void RightAngledTriangleTest()
+        {
+            var triangle = new Triangle(3, 4, 5);
+            Assert.True(triangle.IsRightAngled());
+        }
+
+        [Test]
+        public void NotRightAngledTriangleTest()
+        {
+            var triangle = new Triangle(3, 4, 6);
+            Assert.False(triangle.IsRightAngled());
+        }
+
+        [Test]
         public void TestTriangleSides()
         {
             Assert.Throws<ArgumentException>(() => new Triangle(0, 4, 5));
